@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    min-height: 100vh;
+}
+
+
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.Login-Container {
+    position: absolute;
+    border : 5px solid black;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%,-50%);
+
+
+    width: 35vw;
+    height: 50vh;
+
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+input {
+    width: 15vw;
+}
+
+a:hover {
+    text-decoration: underline;
+}
