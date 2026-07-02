@@ -4,6 +4,7 @@ import './App.css'
 
 import QuizPage from './Quizpage.jsx'
 import LoginPage from './LoginPage.jsx'
+import SignUpPage from './SignupPage.jsx'
 
 function App() {
   const [Page,SetPage] = useState("Login")
@@ -11,8 +12,9 @@ function App() {
   return (
     <>
     <div>
-      {Page === "Login" && (<LoginPage ToQuizPage={() => SetPage("Quiz")}/>)}
-      {Page === "Quiz" && (<QuizPage ToLogin={() => SetPage("Login")} />)}
+      {Page === "Login" && (<LoginPage ToSignup={() => SetPage("Signup")} ToQuizPage={() => SetPage("Quiz")}/>)}
+      {Page === "Quiz" && (<QuizPage  ToLogin={() => SetPage("Login")} />)}
+      {Page === "Signup" && (<SignUpPage ToLogin={() => SetPage("Login")} />)}
 
     </div>
       </>

@@ -6,6 +6,7 @@ const path = require("path")
 
 const {DatabaseRouter,database} = require("./database")
 const {QuizRouter} = require("./Quiz")
+const { TokenRouter } = require("./token")
 
 
 const app = express()
@@ -21,6 +22,7 @@ app.use(express.json())
 
 app.use(DatabaseRouter)
 app.use(QuizRouter)
+app.use(TokenRouter)
 
 
 
