@@ -168,7 +168,7 @@ body{
 }
 
 .login-card .btn-link{
-    color: var(--accent) !important;
+    color: var(--accent);
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 500;

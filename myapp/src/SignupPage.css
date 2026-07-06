@@ -33,7 +33,7 @@ body{
     background:#fff;
     border-radius: 20px;
     overflow:hidden;
-    box-shadow: 0 25px 60px rgba(0,0,0,.35)
+    box-shadow: 0 25px 60px rgba(0,0,0,.35);
 }
 
 .login-wrapper .left-panel{
@@ -45,7 +45,6 @@ body{
     min-height: 600px;
 }
 
-/*Learning Quest*/
 .left-panel h2{
     font-size:1.5rem;
     font-weight: 600;
@@ -54,7 +53,6 @@ body{
     color:#9a9a9a;
 }
 
-/*master your quiz*/
 .left-panel h1{
     font-size: 2.2rem;
     font-weight: 700;
@@ -115,6 +113,7 @@ body{
     flex-direction: column;
     justify-content: center;
     padding:4.5rem;
+   
 }
 
 .login-card h1{
@@ -168,12 +167,11 @@ body{
 }
 
 .login-card .btn-link{
-    color: var(--accent) !important;
+    color: var(--accent);
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 500;
     padding: 0;
-    border: none;
     background: none;
     cursor: pointer;
 }

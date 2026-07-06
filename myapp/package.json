@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "bootstrap": "^5.3.8",
     "lucide-react": "^1.23.0",
     "react": "^19.2.7",
+    "react-devtools": "^7.0.1",
     "react-dom": "^19.2.7",
     "validator": "^13.15.35"
   },

@@ -4,7 +4,10 @@ import {BookOpen,Brain,Trophy,BarChart3} from "lucide-react"
 
 
 function LoginPage({ToQuizPage,ToSignup}) {
+    const [username, setUsername] = useState("")
     const[showPassword,setShowPassword] = useState(false)
+    const [password, setPassword] = useState("")   
+    const [errors, setErrors] = useState({})
 
 
     async function VerifyToken() {
@@ -37,7 +40,6 @@ function LoginPage({ToQuizPage,ToSignup}) {
             let currentErrors = { username: "", password: "" };
             let isValid = true;
 
-            // 触发表单前端验证逻辑
             if (!username.trim()) {
                 currentErrors.username = "Username or Email cannot be empty.";
                 isValid = false;
@@ -158,25 +160,24 @@ function LoginPage({ToQuizPage,ToSignup}) {
 
                         <div className="mb-3">
                             <label htmlFor="Username" className="form-label">Username / Email</label>
-                            <input id="Username" type="text" className="form-control" placeholder="ilovedevops@gmail.com"/>
-                            <div className="error-message">Enter a valid username.</div>
+                            <input id="Username" type="text" className="form-control" placeholder="ilovedevops@gmail.com" value={username} onChange={(e) => setUsername(e.target.value)}/>
+
+                            {errors.username && <div className="error-message">{errors.username}</div>}
                         </div>
 
                         <div className="mb-3">
                             <label htmlFor="Password" className="form-label">Password</label>
                             <div className="input-group">
-                                <input id="Password" type={showPassword ? "text" : "password"} className="form-control" placeholder="•••••••"/>
+                                <input id="Password" type={showPassword ? "text" : "password"} className="form-control" placeholder="•••••••" value={password} onChange={(e) => setPassword(e.target.value)}/>
                                 <button type="button" className="btn btn-outline-secondary" onClick={() => setShowPassword(!showPassword)}>
                                     {showPassword ? "Hide" : "Show"}
                                 </button>
                             </div>
-
-                            <div className="error-message">
-                                Password must be at least 8 characters.
-                            </div>
+                            {errors.password && <div className="error-message">{errors.password}</div>}
                         </div>
 
-                        <div className="d-flex justify-content-between align-items-center mb-3">
+                        
+                        <div className="mb-3">
                             <div className="form-check">
                                 <input className="form-check-input" type="checkbox" id="rememberMe"/>
                                 <label className="form-check-label" htmlFor="rememberMe">Remember me</label>
