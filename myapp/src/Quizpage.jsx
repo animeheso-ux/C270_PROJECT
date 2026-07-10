@@ -1,11 +1,23 @@
-import { useEffect } from "react"
+import { useEffect , useState } from "react"
 
 
 
 import "./QuizPage.css"
 
 
-function QuizPage({ToLogin}) {
+function QuizPage({ToLogin,ToQuizCreation}) {
+  const [questions, setQuestions] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [feedback, setFeedback] = useState("");
+  const [score, setScore] = useState(0);
+  const [finished, setFinished] = useState(false);
+
+  const LoadTopics = questions.map((question)=> {
+    return (
+      <h1>ee</h1>
+    )
+  })
 
     async function GetToken() {
         const Token = localStorage.getItem("Token")
@@ -36,6 +48,16 @@ function QuizPage({ToLogin}) {
 
 
 
+
+
+
+
+
+
+   
+
+
+
     useEffect(()=> {
         if (location.port != 3000) {return}
         GetToken()
@@ -45,7 +67,14 @@ function QuizPage({ToLogin}) {
 
     return (
         <div>
-            <h1>QuizPage</h1>
+
+            <button onClick={ToQuizCreation}>Create quiz</button>
+
+
+            <div>
+
+            </div>
+
         </div>
     )
 }
