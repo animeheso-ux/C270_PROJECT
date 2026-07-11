@@ -349,6 +349,9 @@ function QuizPage({ToLogin,ToQuizCreation}) {
                         <div className="Quiz-ResultCard">
                             <div className="Quiz-ResultLabel">Your result</div>
                             <div className="Quiz-ResultScore">{Math.round((score / questions.length) * 100)}%</div>
+                            {Math.round((score / questions.length) * 100) > 50 ? <h1>Well done!</h1> : <h1>Try harder next time!</h1>}
+
+
                             <div className="Quiz-ResultSub">{score} out of {questions.length} correct</div>
                             <button className="Quiz-PrimaryButton" onClick={HandleRestart}>
                                 Try another module
