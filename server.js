@@ -45,9 +45,9 @@ exec("cd myapp && npm run build" ,(err)=> {
         throw err
     }
 
-    console.log("REACT BUILD : SUCCESS")
+    console.log("REACT BUILD : SUCCESS",`http://localhost:${PORT}`)
 })
 
 
 
-server.listen(PORT,()=> console.log("localhost connected"),exec(`start http://localhost:${PORT}`))
+server.listen(PORT,()=> console.log(`http://localhost:${PORT}`),exec(`start http://localhost:${PORT}`))

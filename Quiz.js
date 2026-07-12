@@ -64,6 +64,8 @@ for (let i = 0; i < options.length; i++) {
 })
 
 
+
+
 QuizRouter.get("/GetTopics",(req,res)=> {
     database.query("SELECT * FROM modules",(err,results)=> {
 
