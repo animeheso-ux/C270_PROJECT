@@ -20,9 +20,6 @@ function LoginPage({ToQuizPage,ToSignup,ToTeacher,ToAdmin}) {
         }
     }
 
-
-
-
     async function VerifyToken() {
         const Token = localStorage.getItem("Token")
 
