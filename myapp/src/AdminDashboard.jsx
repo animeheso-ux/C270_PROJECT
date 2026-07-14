@@ -8,17 +8,6 @@ function AdminDashboard({ user, onLogout = () => { localStorage.clear(); window.
   const [showLogs, setShowLogs] = useState(false);
   const [users,SetUsers] = useState("")
 
-
-  async function GetUsers() {
-    const response = await fetch("/GetUsers")
-
-    const data = await response.json()
-
-    SetUsers(data.result)
-  }
-
-
-  
   // Mock database entries for the Access Control toggle
   const platformUsers = [
     { id: 1, name: "xr", email: "2540104@myrp.edu.sg", role: "student" },
@@ -26,6 +15,33 @@ function AdminDashboard({ user, onLogout = () => { localStorage.clear(); window.
     { id: 3, name: "admin_testing", email: "2540104@admin.edu.sg", role: "admin" }
   ];
 
+
+  async function GetUsers() {
+    try{
+      const response = await fetch("/GetUsers")
+      const data = await response.json()
+      SetUsers(data.result)
+      
+      if (data && data.result) {
+        SetUsers(data.result);
+      } else {
+        // Fallback if data structure is missing the result key
+        throw new Error("No database result data found");
+      }
+    } catch (error) {
+      console.warn("Database fetch failed. Using mock platformUsers fallback data instead.");
+      
+      // Map 'name' from the mock data to 'username' so it works seamlessly with your table layout
+      const formattedMockUsers = platformUsers.map(u => ({
+        id: u.id,
+        username: u.name, // maps 'name' to 'username'
+        email: u.email,
+        role: u.role
+      }));
+      
+      SetUsers(formattedMockUsers);
+    }
+  }
 
   useEffect(()=> {
     GetUsers()
@@ -42,12 +58,6 @@ function AdminDashboard({ user, onLogout = () => { localStorage.clear(); window.
             Access Level: <strong className="text-info">Administrator ({user?.username || "Admin"})</strong>
           </p>
         </div>
-        <button 
-          className="btn btn-outline-danger fw-semibold px-4" 
-          onClick={onLogout}
-        >
-          Sign Out
-        </button>
       </header>
 
       {/* Grid Layout Container */}
@@ -89,8 +99,7 @@ function AdminDashboard({ user, onLogout = () => { localStorage.clear(); window.
               </div>
             </div>
           </div>
-        
-        <div/>  
+          
         {/* --- INTERACTIVE DYNAMIC RENDER BLOCKS --- */}
 
         {/* Action Toggle Component A: Access Matrix Data Table */}
